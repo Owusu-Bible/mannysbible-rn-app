@@ -1,6 +1,6 @@
 {
   "name": "mannysbible",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -19,7 +19,10 @@
     "test-huaweip8": "adb shell wm size 1080x1920 && adb shell wm density 424",
     "postinstall": "patch-package && npx react-native-asset",
     "link_componentlib": "ln -s node_modules ../lib/lib-react-native/node_modules",
-    "get_rn_android_debug_key": "keytool -list -v -alias androiddebugkey -keystore android/app/debug.keystore"
+    "get_rn_android_debug_key": "keytool -list -v -alias androiddebugkey -keystore android/app/debug.keystore",
+    "build-android": "./android/fastlane/scripts/firebaseDistribute.sh",
+    "upgrade-build-android": "yarn update-version && yarn build-android",
+    "set-logo": "npx icon-set-creator create src/assets/logo.png "
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",

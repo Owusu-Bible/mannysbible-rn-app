@@ -88,7 +88,7 @@ export const createHolyDaysTemplate = (): {[key: string]: IHolyDay} => ({
     name: 'Feast Of Tabernacles',
     month: 7,
     day: 15,
-    duration: 7,
+    duration: 8,
     dates: [],
     observation: [],
     scriptures: [],
@@ -152,7 +152,7 @@ function getNextSabbathOfDate(d: Date) {
 export const getHolyDaysOfTheYear = (date: Date, spreadByDate?: boolean) => {
   const holyDays = createHolyDaysTemplate();
   const firstDayOfTheYear = lunar.getLunarFirstDay(date);
-
+  console.log(firstDayOfTheYear)
   const nextYear = new Date(firstDayOfTheYear);
   nextYear.setFullYear(nextYear.getFullYear() + 1);
 

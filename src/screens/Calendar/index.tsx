@@ -65,11 +65,11 @@ export const Calendar: React.FC = ({}) => {
   const onDayPress = day => {
     setSelected(day.dateString);
   };
-
+console.log(`${initialDate}`)
   return (
     <Container>
       <CalendarList
-        current={initialDate}
+        current={`${initialDate}`}
         hideExtraDays={true}
         pastScrollRange={RANGE}
         futureScrollRange={RANGE}

@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface mannysbibleTests : XCTestCase
+@interface MannysBibleTests : XCTestCase
 
 @end
 
-@implementation mannysbibleTests
+@implementation MannysBibleTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
