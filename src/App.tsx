@@ -1,11 +1,10 @@
-import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-get-random-values';
-
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {Navigation} from './navigation';
 import parseConfig from '../parseClientConfig.json';
 import {ParseInitializeRN, SubClasses} from 'lib_cloud/parse';
-import 'react-native-gesture-handler';
 import {enableScreens} from 'react-native-screens';
 import {
   GetParseCredentials,
@@ -21,17 +20,17 @@ export function App(): JSX.Element {
   useEffect(() => {
     const getConnected = async () => {
       const result = await GetParseCredentials();
-      const cloud = new ParseInitializeRN(result ?? parseConfig, SubClasses);
+      // const cloud = new ParseInitializeRN(parseConfig, SubClasses);
 
-      // TODO: temp to be removed. used for testing
-      if (!result) {
-        SaveParseCredentials(parseConfig);
-      }
-      const currentUser = await Parse.User.currentAsync();
+      // // TODO: temp to be removed. used for testing
+      // if (!result) {
+      //   SaveParseCredentials(parseConfig);
+      // }
+      // const currentUser = await Parse.User.currentAsync();
 
-      if (currentUser) {
-        setUser(currentUser);
-      }
+      // if (currentUser) {
+      //   setUser(currentUser);
+      // }
       setLoading(false);
     };
 
@@ -42,7 +41,7 @@ export function App(): JSX.Element {
     <Loading full />
   ) : (
     <NavigationContainer>
-      <Navigation user={user} />
+      <Navigation />
     </NavigationContainer>
   );
 }

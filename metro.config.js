@@ -11,6 +11,7 @@ const extraNodeModules = {
 
 const watchFolders = [
   path.resolve(`${__dirname}'/../lib/lib-react-native/src`),
+  path.resolve(`${__dirname}'/../lib/israel-calendar/src`),
 ];
 
 module.exports = {

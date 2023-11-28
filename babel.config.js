@@ -56,6 +56,7 @@ module.exports = {
           lib_styles: '../lib/lib-react-native/src/styles',
           lib_types: '../lib/lib-react-native/src/types',
           lib_utils: '../lib/lib-react-native/src/utils',
+          israel_calendar: '../lib/israel-calendar/src',
         },
       },
     ],

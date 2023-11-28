@@ -1,35 +1,50 @@
-import {Home, Settings} from '../screens';
+import {
+  Home,
+  Calendar,
+  Precepts,
+  Breakdowns,
+  Bible,
+  Settings,
+} from '../screens';
 import {NavigationStructure, setupNavigation} from 'lib_navigation';
-import {Authentication} from 'lib_screens';
-import Parse from 'parse/react-native';
-import {FC} from 'react';
-
-interface NavigationProps {
-  user?: Parse.User<Parse.Attributes>;
-}
-export const Navigation: FC<NavigationProps> = ({user}) => {
-  const initialNavigationOrder = user
-    ? [
-        {
-          name: 'Home',
-          component: Home,
-        },
-        Authentication,
-      ]
-    : [
-        Authentication,
-        {
-          name: 'Home',
-          component: Home,
-        },
-      ];
-
+import PreceptPage from '@modals/PreceptPage';
+export const Navigation = () => {
   const navigationStructure: NavigationStructure = {
     stackScreens: [
-      ...initialNavigationOrder,
       {
-        name: 'Settings',
-        component: Settings,
+        name: 'Main',
+        drawerScreens: [
+          {
+            name: 'Home',
+            component: Home,
+          },
+          {
+            name: 'Bible',
+            component: Bible,
+          },
+          {
+            name: 'Precepts',
+            component: Precepts,
+          },
+          {
+            name: 'Breakdowns',
+            component: Breakdowns,
+          },
+          {
+            name: 'Calendar',
+            component: Calendar,
+          },
+          {
+            name: 'Settings',
+            component: Settings,
+          },
+        ],
+      },
+    ],
+    modals: [
+      {
+        name: 'PreceptPage',
+        component: PreceptPage,
       },
     ],
   };

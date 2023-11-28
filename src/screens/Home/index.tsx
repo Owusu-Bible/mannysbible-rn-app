@@ -1,23 +1,58 @@
-import {Container, Text} from 'lib_components';
-import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import React from "react";
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {
+  Container,
+  Divider,
+  Icon,
+  ListRowItem,
+  Section,
+  Spacer,
+  Text,
+} from "lib_components";
+import { actions } from "./actions";
+import { RefreshControl, ScrollView, View } from "react-native";
 
 export const Home: React.FC = ({}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  const {
+    precepts,
+    upcomingHolyDays,
+    navigateToPreceptPage,
+    refreshing,
+    onRefresh,
+  } = actions();
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Container alignCenter justifyCenter>
-        <Text heading1>Welcome to your new app.</Text>
-      </Container>
-    </SafeAreaView>
+    <Container>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <Section title="Precept" actionButtonText="View All">
+          {precepts.map((precept, index) => (
+            <Container key={index}>
+              <Divider />
+              <ListRowItem
+                title={precept.text}
+                onPress={navigateToPreceptPage(precept)}
+              />
+            </Container>
+          ))}
+        </Section>
+        <Divider />
+        <Spacer />
+        <Section title="Upcoming Holy Days" actionButtonText="View All">
+          {upcomingHolyDays?.slice(0, 4).map((holyDay, index) => (
+            <Container key={index}>
+              <Divider />
+              <ListRowItem
+                title={holyDay.name}
+                subTitle={holyDay?.dateRangeText}
+              />
+            </Container>
+          ))}
+        </Section>
+      </ScrollView>
+    </Container>
   );
 };
-
 export default Home;
