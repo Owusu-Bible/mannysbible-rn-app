@@ -1,1 +1,1 @@
-# mannysbible-rn-app
+# rn-template
